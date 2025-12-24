@@ -1,0 +1,15 @@
+# Prettier ignore patterns
+node_modules
+.next
+.out
+dist
+build
+coverage
+public
+.vscode
+.husky
+*.log
+*.lock
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

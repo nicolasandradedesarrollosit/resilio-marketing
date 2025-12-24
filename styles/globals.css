@@ -1,3 +1,24 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'tailwindcss';
 
-@config "../tailwind.config.js"
+@theme {
+  --color-blue-marguerite-50: #f1f3fc;
+  --color-blue-marguerite-100: #e5e7fa;
+  --color-blue-marguerite-200: #d0d3f5;
+  --color-blue-marguerite-300: #b4b6ed;
+  --color-blue-marguerite-400: #9995e4;
+  --color-blue-marguerite-500: #867bd9;
+  --color-blue-marguerite-600: #7d6acd;
+  --color-blue-marguerite-700: #6551b1;
+  --color-blue-marguerite-800: #52448f;
+  --color-blue-marguerite-900: #453c73;
+  --color-blue-marguerite-950: #292343;
+}
+
+@border-box {
+  .border-box {
+    box-sizing: border-box;
+  }
+}
