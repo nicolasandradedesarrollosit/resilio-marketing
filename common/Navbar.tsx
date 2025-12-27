@@ -15,8 +15,9 @@ export default function Navbar() {
   const navBarItems = [
     { name: 'Inicio', href: '#header' },
     { name: 'Servicios', href: '#services' },
-    { name: 'Nosotros', href: '#about' },
-    { name: 'Contacto', href: '#contact' },
+    { name: 'Proceso', href: '#process' },
+    { name: 'Portfolio', href: '#portfolio' },
+    { name: 'Contacto', href: '/contact' },
     { name: 'Eventos', href: '/events' },
   ];
 

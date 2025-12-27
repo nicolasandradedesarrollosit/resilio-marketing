@@ -1,6 +1,10 @@
 'use client';
 import Hero from './_components/Hero';
 import FirstSection from './_components/FirstSection';
+import SecondSection from './_components/SecondSection';
+import ThirdSection from './_components/ThirdSection';
+
+import Footer from '@/common/Footer';
 
 export default function Home() {
   return (
@@ -16,7 +20,12 @@ export default function Home() {
       </header>
       <main>
         <FirstSection />
+        <ThirdSection />
+        <SecondSection />
       </main>
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }

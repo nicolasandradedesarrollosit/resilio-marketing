@@ -1,8 +1,19 @@
 import { Button } from '@heroui/react';
+import { useRouter } from 'next/navigation';
 
 import Navbar from '@/common/Navbar';
 
 export default function Hero() {
+  const router = useRouter();
+
+  const handleContact = () => {
+    router.push('/contact');
+  };
+
+  const handlePortfolio = () => {
+    router.push('#portfolio');
+  };
+
   return (
     <div className="w-full relative" id="header">
       <div className="relative z-50">
@@ -40,6 +51,7 @@ export default function Hero() {
               className="bg-dull-lavender-400/50 hover:bg-dull-lavender-600/70 text-white/90 transition-all duration-300 w-full sm:w-auto px-8 py-6 text-base sm:text-lg font-medium"
               size="lg"
               variant="ghost"
+              onClick={handlePortfolio}
             >
               Nuestros trabajos
             </Button>
@@ -47,6 +59,7 @@ export default function Hero() {
               className="bg-white/90 text-dull-lavender-900 hover:bg-white transition-all duration-300 w-full sm:w-auto px-8 py-6 text-base sm:text-lg font-medium"
               size="lg"
               variant="primary"
+              onClick={handleContact}
             >
               Envía un mensaje
             </Button>

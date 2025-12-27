@@ -23,6 +23,10 @@ export default function FirstSection() {
     },
   ];
 
+  const handleContact = () => {
+    router.push('/contact');
+  };
+
   return (
     <div
       className="w-full min-h-[60vh] py-16 md:py-20 lg:py-24 px-4 md:px-6 lg:px-8 flex flex-col gap-6 bg-black items-center"
@@ -61,9 +65,7 @@ export default function FirstSection() {
                 className="bg-white/10 hover:bg-white hover:text-black text-white border-white/30 border backdrop-blur-sm transition-all duration-300 w-full"
                 size="sm"
                 variant="tertiary"
-                onPress={() => {
-                  router.push('#contact');
-                }}
+                onPress={handleContact}
               >
                 Escríbenos!
               </Button>
