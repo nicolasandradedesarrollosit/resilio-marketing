@@ -41,8 +41,8 @@ export default function HoverNavbar() {
   };
 
   return (
-    <div className="h-auto flex items-start justify-center py-12 bg-transparent">
-      <nav className="hidden md:block bg-black px-6 py-2 rounded-full shadow-2xl top-8 sticky">
+    <div className="absolute inset-x-0 top-6 flex items-start justify-center py-4 bg-transparent pointer-events-none">
+      <nav className="pointer-events-auto hidden md:block bg-black px-6 py-2 rounded-full shadow-2xl">
         <div
           className="flex gap-4 lg:gap-8 relative items-center"
           onMouseLeave={handleMouseLeave}
@@ -70,7 +70,7 @@ export default function HoverNavbar() {
         </div>
       </nav>
 
-      <nav className="md:hidden bg-black rounded-3xl shadow-2xl top-8 sticky w-[90%] max-w-md">
+      <nav className="pointer-events-auto md:hidden bg-black rounded-3xl shadow-2xl w-[90%] max-w-md">
         <div className="flex items-center justify-between px-6 py-3">
           <span className="text-white font-bold text-lg">Menu</span>
           <button
