@@ -1,8 +1,9 @@
-'use client';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import Link from 'next/link';
 
-export default function HoverNavbar() {
+export default function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [indicatorStyle, setIndicatorStyle] = useState({
     width: 0,
     height: 0,
@@ -11,29 +12,28 @@ export default function HoverNavbar() {
     opacity: 0,
   });
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const navBarItems = [
-    { name: 'Inicio', href: '#' },
-    { name: 'Servicios', href: '#' },
-    { name: 'Proyectos', href: '#' },
-    { name: 'Contacto', href: '#' },
+    { name: 'Inicio', href: '#header' },
+    { name: 'Servicios', href: '#services' },
+    { name: 'Nosotros', href: '#about' },
+    { name: 'Contacto', href: '#contact' },
+    { name: 'Eventos', href: '/events' },
   ];
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const link = e.currentTarget;
-    const container = link.parentElement as any;
+    const target = e.currentTarget;
+    const rect = target.getBoundingClientRect();
+    const parent = target.parentElement?.getBoundingClientRect();
 
-    const linkRect = link.getBoundingClientRect();
-    const containerRect = container.getBoundingClientRect();
-
-    setIndicatorStyle({
-      width: linkRect.width,
-      height: linkRect.height,
-      left: linkRect.left - containerRect.left,
-      top: linkRect.top - containerRect.top,
-      opacity: 1,
-    });
+    if (parent) {
+      setIndicatorStyle({
+        width: rect.width,
+        height: rect.height,
+        left: rect.left - parent.left,
+        top: rect.top - parent.top,
+        opacity: 1,
+      });
+    }
   };
 
   const handleMouseLeave = () => {
@@ -41,7 +41,7 @@ export default function HoverNavbar() {
   };
 
   return (
-    <div className="absolute inset-x-0 top-6 flex items-start justify-center py-4 bg-transparent pointer-events-none">
+    <div className="fixed inset-x-0 top-6 flex items-start justify-center py-4 bg-transparent pointer-events-none z-50">
       <nav className="pointer-events-auto hidden md:block bg-black px-6 py-2 rounded-full shadow-2xl">
         <div
           className="flex gap-4 lg:gap-8 relative items-center"
@@ -88,14 +88,14 @@ export default function HoverNavbar() {
         >
           <div className="px-4 pb-4 pt-2 flex flex-col gap-2">
             {navBarItems.map((items, index) => (
-              <a
+              <Link
                 key={index}
                 className="text-white text-md font-medium px-4 py-3 rounded-2xl hover:bg-white/10 transition-colors duration-300"
                 href={items.href}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {items.name}
-              </a>
+              </Link>
             ))}
           </div>
         </div>

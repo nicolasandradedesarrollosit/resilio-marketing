@@ -1,7 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 @import 'tailwindcss';
+@import '@heroui/styles';
+
+@source "../components";
+@source "../app";
+@source "../common";
+
+@variant dark (&:where(.dark, .dark *));
 
 @theme {
   --color-dull-lavender-50: #eeeeff;
@@ -17,8 +21,6 @@
   --color-dull-lavender-950: #281b4b;
 }
 
-@border-box {
-  .border-box {
-    box-sizing: border-box;
-  }
+html {
+  scroll-behavior: smooth;
 }

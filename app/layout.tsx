@@ -1,8 +1,7 @@
 import '@/styles/globals.css';
 import { Metadata, Viewport } from 'next';
 import clsx from 'clsx';
-
-import { Providers } from './providers';
+import { ThemeProvider } from 'next-themes';
 
 import { siteConfig } from '@/config/site';
 import { fontSans } from '@/config/fonts';
@@ -39,11 +38,11 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
+        <ThemeProvider attribute="class" defaultTheme="dark">
           <div className="relative flex flex-col h-screen">
             <main>{children}</main>
           </div>
-        </Providers>
+        </ThemeProvider>
       </body>
     </html>
   );
