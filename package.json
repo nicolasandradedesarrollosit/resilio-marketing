@@ -18,6 +18,7 @@
     ]
   },
   "dependencies": {
+    "@eslint/compat": "^2.0.0",
     "@heroui/accordion": "2.2.26",
     "@heroui/alert": "2.2.29",
     "@heroui/autocomplete": "2.3.31",
