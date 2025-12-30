@@ -4,6 +4,8 @@ import { useState, useRef } from 'react';
 import { Alert } from '@heroui/react';
 import { Button } from '@heroui/react';
 
+import { sendContactForm } from '@/services/contactFormService';
+
 interface ContactFormData {
   name: string;
   email: string;
@@ -59,20 +61,32 @@ export default function SecondComponent() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
-      // e.preventDefault();
-      // if (!Object.values(stateValidations).every(Boolean)) return setFormIsInvalid(true);
-      // setFormIsInvalid(false);
-      // setIsSubmitting(true);
+      e.preventDefault();
+      if (!Object.values(stateValidations).every(Boolean))
+        return setFormIsInvalid(true);
+      setFormIsInvalid(false);
+      setIsSubmitting(true);
+      const formData = new FormData(e.currentTarget);
+      const data: ContactFormData = Object.fromEntries(
+        Array.from(formData.entries()).map(([k, v]) => [
+          k,
+          typeof v === 'string' ? v : '',
+        ])
+      ) as unknown as ContactFormData;
+      const okStatus = (res: any) =>
+        typeof res === 'object' &&
+        res !== null &&
+        ('status' in res ? [200, 201].includes(res.status) : true);
 
-      // const formData = new FormData(e.currentTarget);
-      // const data: ContactFormData = Object.fromEntries(
-      //     Array.from(formData.entries()).map(([k, v]) => [k, typeof v === "string" ? v : ""])
-      // ) as unknown as ContactFormData;
+      const dataAppended = { ...data, origin: 'Resilio Marketing' };
 
-      // const okStatus = (res: any) => (typeof res === 'object' && res !== null && ('status' in res ? [200, 201].includes(res.status) : true));
-      // if (!okStatus(result)) {
-      //     throw new Error(`Respuesta inesperada del servidor: ${JSON.stringify(result)}`);
-      // }
+      const result = await sendContactForm(dataAppended as any);
+
+      if (!okStatus(result)) {
+        throw new Error(
+          `Respuesta inesperada del servidor: ${JSON.stringify(result)}`
+        );
+      }
 
       formRef.current?.reset();
       setStateValidations({
