@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { Alert } from '@heroui/react';
+import { toast } from 'sonner';
 import { Button } from '@heroui/react';
 
 import { sendContactForm } from '@/services/contactFormService';
@@ -11,6 +11,7 @@ interface ContactFormData {
   email: string;
   subject: string;
   message: string;
+  origin: string;
 }
 
 export default function SecondComponent() {
@@ -62,10 +63,20 @@ export default function SecondComponent() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
-      if (!Object.values(stateValidations).every(Boolean))
-        return setFormIsInvalid(true);
+
+      if (!Object.values(stateValidations).every(Boolean)) {
+        setFormIsInvalid(true);
+        toast.error('Formulario incompleto', {
+          description: 'Por favor, completá todos los campos correctamente.',
+          duration: 4000,
+        });
+
+        return;
+      }
+
       setFormIsInvalid(false);
       setIsSubmitting(true);
+
       const formData = new FormData(e.currentTarget);
       const data: ContactFormData = Object.fromEntries(
         Array.from(formData.entries()).map(([k, v]) => [
@@ -73,20 +84,35 @@ export default function SecondComponent() {
           typeof v === 'string' ? v : '',
         ])
       ) as unknown as ContactFormData;
+
+      const dataAppended = { ...data, origin: 'Resilio B2C SAAS APP' };
+
+      const toastId = toast.loading('Enviando mensaje...', {
+        description: 'Por favor, esperá un momento.',
+      });
+
+      const result = await sendContactForm(dataAppended as any);
+
       const okStatus = (res: any) =>
         typeof res === 'object' &&
         res !== null &&
         ('status' in res ? [200, 201].includes(res.status) : true);
-
-      const dataAppended = { ...data, origin: 'Resilio Marketing' };
-
-      const result = await sendContactForm(dataAppended as any);
 
       if (!okStatus(result)) {
         throw new Error(
           `Respuesta inesperada del servidor: ${JSON.stringify(result)}`
         );
       }
+
+      toast.dismiss(toastId);
+      toast.success('¡Mensaje enviado!', {
+        description: 'Te contactaremos pronto.',
+        duration: 5000,
+        action: {
+          label: 'Cerrar',
+          onClick: () => console.log('Toast cerrado'),
+        },
+      });
 
       formRef.current?.reset();
       setStateValidations({
@@ -98,7 +124,20 @@ export default function SecondComponent() {
     } catch (error) {
       console.error('Error al enviar el formulario:', error);
 
-      setFormIsInvalid(true);
+      toast.error('Error al enviar', {
+        description:
+          'Hubo un problema al procesar tu solicitud. Por favor, intentá nuevamente.',
+        duration: 6000,
+        action: {
+          label: 'Reintentar',
+          onClick: () => {
+            if (formRef.current) {
+              formRef.current.requestSubmit();
+            }
+          },
+        },
+      });
+
       setIsSubmitting(false);
 
       return;
@@ -145,7 +184,7 @@ export default function SecondComponent() {
               className={`text-xs left-0 top-full absolute mt-1 ${stateValidations.name === false ? 'visible text-red-500' : 'invisible'}`}
               role="alert"
             >
-              El formato del nombre es inválido ejemplo: Juan Peréz
+              El formato del nombre es inválido ejemplo: Juan Pérez
             </span>
           </div>
 
@@ -222,12 +261,11 @@ export default function SecondComponent() {
           </div>
 
           <Button
-            className="w-full px-4 md:px-6 py-2.5 md:py-3 bg-dull-lavender-500 hover:bg-dull-lavender-600 text-white font-medium rounded-lg transition-all duration-300 cursor-pointer shadow-lg shadow-dull-lavender-500/30 hover:shadow-xl hover:shadow-dull-lavender-500/40 transition-duration-300 hover:scale-[1.02] active:scale-[0.98] text-sm md:text-base"
+            className="w-full px-4 md:px-6 py-4 md:py-6 bg-dull-lavender-500 hover:bg-dull-lavender-600 text-white font-medium rounded-lg transition-all duration-300 cursor-pointer shadow-lg shadow-dull-lavender-500/30 text-sm md:text-base"
             isDisabled={isSubmitting}
-            isPending={isSubmitting}
             type="submit"
           >
-            Enviar mensaje
+            {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
           </Button>
           {formIsInvalid === true && (
             <p
@@ -254,34 +292,6 @@ export default function SecondComponent() {
           </p>
         </div>
       </div>
-      <Alert className={formIsInvalid ? '' : 'hidden'} status="danger">
-        <Alert.Indicator />
-        <Alert.Content>
-          <Alert.Title>Algo salío mal</Alert.Title>
-          <Alert.Description>
-            <ul className="mt-2 list-inside list-disc space-y-1 text-sm">
-              <li>Refresca tu conexión a internet</li>
-              <li>Refresca la página</li>
-              <li>Limpiá la caché de tu navegador</li>
-            </ul>
-          </Alert.Description>
-          <Button className="mt-2 sm:hidden" size="sm" variant="danger">
-            Reintentar
-          </Button>
-        </Alert.Content>
-        <Button className="hidden sm:block" size="sm" variant="danger">
-          Reintentar
-        </Button>
-      </Alert>
-      <Alert
-        className={formIsInvalid === false ? '' : 'hidden'}
-        status="success"
-      >
-        <Alert.Indicator />
-        <Alert.Content>
-          <Alert.Title>Mensaje enviado con éxito</Alert.Title>
-        </Alert.Content>
-      </Alert>
     </div>
   );
 }

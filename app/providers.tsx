@@ -6,6 +6,8 @@ import * as React from 'react';
 import { useRouter } from 'next/navigation';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 
+import Toaster from '@/common/Sonner';
+
 export interface ProvidersProps {
   children: React.ReactNode;
   themeProps?: ThemeProviderProps;
@@ -14,5 +16,10 @@ export interface ProvidersProps {
 export function Providers({ children, themeProps }: ProvidersProps) {
   const router = useRouter();
 
-  return <NextThemesProvider {...themeProps}>{children}</NextThemesProvider>;
+  return (
+    <NextThemesProvider {...themeProps}>
+      {children}
+      <Toaster richColors position="top-right" />
+    </NextThemesProvider>
+  );
 }
