@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function Footer() {
   return (
     <footer className="bg-black text-white w-full border-t border-gray-900">
@@ -5,10 +7,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12 md:gap-16 mb-12 sm:mb-16">
           <div className="flex flex-col gap-4 sm:gap-6">
             <div className="flex items-center gap-3">
-              <img
+              <Image
                 alt="Resilio logo"
                 className="h-10 w-10 sm:h-12 sm:w-12"
-                src="logo-icon.png"
+                height={48}
+                src="/logo-icon.png"
+                width={48}
               />
               <span className="text-xl sm:text-2xl font-light tracking-tight">
                 Resilio

@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import FirstComponent from './_components/FirstComponent';
 import SecondComponent from './_components/SecondComponent';
 
@@ -9,10 +11,12 @@ export default function Contact() {
       <section className="flex flex-col min-h-screen w-full bg-dull-lavender-50">
         <GoBack url="/" />
         <div className="flex h-16 md:h-20 lg:h-24 justify-center items-center bg-dull-lavender-500 w-full py-18">
-          <img
+          <Image
             alt=""
             className="h-10 w-10 md:h-12 md:w-12 lg:h-14 lg:w-14"
-            src="logo-icon.png"
+            height={56}
+            src="/logo-icon.png"
+            width={56}
           />
         </div>
 
@@ -20,7 +24,6 @@ export default function Contact() {
           <FirstComponent />
           <SecondComponent />
         </div>
-        {/* <Footer /> */}
       </section>
     </>
   );

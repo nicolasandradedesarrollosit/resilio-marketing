@@ -1,6 +1,7 @@
 import { Card, Button } from '@heroui/react';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const mockProjects = [
   {
@@ -118,11 +119,13 @@ export default function SecondSection() {
                   className="relative h-72 w-full overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
                   variant="transparent"
                 >
-                  <img
+                  <Image
                     alt={project.title}
                     aria-hidden="true"
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                    height={600}
                     src={project.imageSrc}
+                    width={800}
                   />
                   <Card.Footer className="z-10 mt-auto flex flex-col rounded-3xl items-start gap-3 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-5">
                     <div className="w-full">
@@ -171,11 +174,13 @@ export default function SecondSection() {
                   className="relative h-72 lg:h-80 w-full overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
                   variant="transparent"
                 >
-                  <img
+                  <Image
                     alt={project.title}
                     aria-hidden="true"
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                    height={600}
                     src={project.imageSrc}
+                    width={800}
                   />
                   <Card.Footer className="z-10 mt-auto flex flex-col rounded-3xl items-start gap-2 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-4">
                     <div className="w-full">

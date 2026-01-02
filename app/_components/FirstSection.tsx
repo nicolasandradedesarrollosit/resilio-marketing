@@ -1,5 +1,6 @@
 import { Card, Button } from '@heroui/react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 export default function FirstSection() {
   const router = useRouter();
@@ -46,11 +47,13 @@ export default function FirstSection() {
             className="relative h-64 md:h-72 lg:h-80 w-full overflow-hidden rounded-lg"
             variant="transparent"
           >
-            <img
+            <Image
               alt={card.title}
               aria-hidden="true"
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-300"
+              height={320}
               src={card.imageSrc}
+              width={400}
             />
             <Card.Footer className="z-10 mt-auto flex flex-col rounded-3xl items-start gap-2 bg-gradient-to-t from-black/80 to-transparent p-4">
               <div className="w-full">

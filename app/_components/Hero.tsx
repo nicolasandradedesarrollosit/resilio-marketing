@@ -1,5 +1,6 @@
 import { Button } from '@heroui/react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 import Navbar from '@/common/Navbar';
 
@@ -33,10 +34,12 @@ export default function Hero() {
           </div>
         </div>
         <div className="w-full lg:w-1/2 flex flex-col justify-center gap-8 items-center text-center px-4 py-12 lg:py-0">
-          <img
+          <Image
             alt=""
             className="h-16 w-16 sm:h-24 sm:w-24"
+            height={96}
             src="/logo-icon.png"
+            width={96}
           />
           <div className="flex flex-col gap-4 max-w-xl">
             <h1 className="text-white/90 font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl tracking-tight leading-tight">
