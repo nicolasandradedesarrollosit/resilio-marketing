@@ -172,7 +172,7 @@ export default function SecondComponent() {
               Nombre completo
             </label>
             <input
-              className="px-3 md:px-4 py-2.5 md:py-3 rounded-lg border border-gray-300 focus:border-dull-lavender-500 focus:ring-2 focus:ring-dull-lavender-200 outline-none transition-all duration-200 text-gray-900 placeholder:text-gray-400 text-sm md:text-base"
+              className="px-3 md:px-4 py-2.5 md:py-3 rounded-lg border border-gray-300 focus:border-dull-lavender-500 focus:ring-2 focus:ring-dull-lavender-200 outline-none transition-all duration-200 text-gray-900 placeholder:text-gray-400"
               id="name"
               name="name"
               placeholder="Ingresá tu nombre"
@@ -181,7 +181,7 @@ export default function SecondComponent() {
             />
             <span
               aria-live="polite"
-              className={`text-xs left-0 top-full absolute mt-1 ${stateValidations.name === false ? 'visible text-red-500' : 'invisible'}`}
+              className={`text-[10px] left-0 top-full absolute mt-1 ${stateValidations.name === false ? 'visible text-red-500' : 'invisible'}`}
               role="alert"
             >
               El formato del nombre es inválido ejemplo: Juan Pérez
@@ -196,7 +196,7 @@ export default function SecondComponent() {
               Email
             </label>
             <input
-              className="px-3 md:px-4 py-2.5 md:py-3 rounded-lg border border-gray-300 focus:border-dull-lavender-500 focus:ring-2 focus:ring-dull-lavender-200 outline-none transition-all duration-200 text-gray-900 placeholder:text-gray-400 text-sm md:text-base"
+              className="px-3 md:px-4 py-2.5 md:py-3 rounded-lg border border-gray-300 focus:border-dull-lavender-500 focus:ring-2 focus:ring-dull-lavender-200 outline-none transition-all duration-200 text-gray-900 placeholder:text-gray-400"
               id="email"
               name="email"
               placeholder="tu@email.com"
@@ -205,7 +205,7 @@ export default function SecondComponent() {
             />
             <span
               aria-live="polite"
-              className={`text-xs left-0 top-full absolute mt-1 ${stateValidations.email === false ? 'visible text-red-500' : 'invisible'}`}
+              className={`text-[10px] left-0 top-full absolute mt-1 ${stateValidations.email === false ? 'visible text-red-500' : 'invisible'}`}
               role="alert"
             >
               El formato del email es inválido ejemplo: juanperez@example.com
@@ -220,7 +220,7 @@ export default function SecondComponent() {
               Asunto
             </label>
             <input
-              className="px-3 md:px-4 py-2.5 md:py-3 rounded-lg border border-gray-300 focus:border-dull-lavender-500 focus:ring-2 focus:ring-dull-lavender-200 outline-none transition-all duration-200 text-gray-900 placeholder:text-gray-400 text-sm md:text-base"
+              className="px-3 md:px-4 py-2.5 md:py-3 rounded-lg border border-gray-300 focus:border-dull-lavender-500 focus:ring-2 focus:ring-dull-lavender-200 outline-none transition-all duration-200 text-gray-900 placeholder:text-gray-400"
               id="subject"
               name="subject"
               placeholder="¿En qué podemos ayudarte?"
@@ -229,7 +229,7 @@ export default function SecondComponent() {
             />
             <span
               aria-live="polite"
-              className={`text-xs left-0 top-full absolute mt-1 ${stateValidations.subject === false ? 'visible text-red-500' : 'invisible'}`}
+              className={`text-[10px] left-0 top-full absolute mt-1 ${stateValidations.subject === false ? 'visible text-red-500' : 'invisible'}`}
               role="alert"
             >
               El formato del asunto es inválido ejemplo: Consulta general
@@ -244,7 +244,7 @@ export default function SecondComponent() {
               Mensaje
             </label>
             <textarea
-              className="px-3 md:px-4 py-2.5 md:py-3 rounded-lg border border-gray-300 focus:border-dull-lavender-500 focus:ring-2 focus:ring-dull-lavender-200 outline-none transition-all duration-200 resize-none text-gray-900 placeholder:text-gray-400 text-sm md:text-base"
+              className="px-3 md:px-4 py-2.5 md:py-3 rounded-lg border border-gray-300 focus:border-dull-lavender-500 focus:ring-2 focus:ring-dull-lavender-200 outline-none transition-all duration-200 resize-none text-gray-900 placeholder:text-gray-400"
               id="message"
               name="message"
               placeholder="Contanos más sobre tu consulta..."
@@ -253,7 +253,7 @@ export default function SecondComponent() {
             />
             <span
               aria-live="polite"
-              className={`text-xs left-0 top-full absolute mt-1 ${stateValidations.message === false ? 'visible text-red-500' : 'invisible'}`}
+              className={`text-[10px] left-0 top-full absolute mt-1 ${stateValidations.message === false ? 'visible text-red-500' : 'invisible'}`}
               role="alert"
             >
               El formato del mensaje es inválido ejemplo: Consulta general
