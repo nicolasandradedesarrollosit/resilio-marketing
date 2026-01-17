@@ -85,7 +85,7 @@ export default function SecondComponent() {
         ])
       ) as unknown as ContactFormData;
 
-      const dataAppended = { ...data, origin: 'Resilio B2C SAAS APP' };
+      const dataAppended = { ...data, origin: 'Resilio Marketing' };
 
       const toastId = toast.loading('Enviando mensaje...', {
         description: 'Por favor, esperá un momento.',
