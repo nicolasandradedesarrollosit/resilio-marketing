@@ -2,21 +2,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 interface EventComponentProps {
-  name: string;
+  title: string;
   description: string;
   date: string;
-  bgColor: string;
+  location: string;
+  image: string;
   href: string;
-  icon?: string;
 }
 
 export default function EventComponent({
-  name,
+  title,
   description,
   date,
-  bgColor,
+  location,
+  image,
   href,
-  icon = '/logo-icon.png',
 }: EventComponentProps) {
   return (
     <Link className="block w-full" href={href}>
@@ -24,7 +24,7 @@ export default function EventComponent({
         className={`group relative overflow-hidden 
                 /* Mobile: Linktree style - compact horizontal card */
                 rounded-xl md:rounded-2xl 
-                bg-gradient-to-br from-${bgColor} to-${bgColor}/40 
+                bg-gradient-to-br from-dull-lavender-900/20 to-dull-lavender-900/30 
                 p-4 md:p-6 lg:p-8 
                 backdrop-blur-sm border border-white/10 
                 hover:border-dull-lavender-400/50 hover:scale-[1.02]
@@ -37,10 +37,10 @@ export default function EventComponent({
         <div className="relative z-10 flex flex-row md:flex-col items-center md:items-start gap-3 md:gap-4 h-full">
           <div className="relative p-2 md:p-2.5 rounded-lg bg-white/10 group-hover:bg-white/20 transition-colors shrink-0">
             <Image
-              alt={name}
+              alt={title}
               className="h-6 w-6 md:h-8 md:w-8"
               height={32}
-              src={icon}
+              src={image}
               width={32}
             />
           </div>
@@ -48,11 +48,42 @@ export default function EventComponent({
           <div className="flex-1 min-w-0 text-left md:w-full">
             <div className="flex flex-col md:flex-col-reverse gap-1 md:gap-2">
               <h3 className="text-sm md:text-lg lg:text-xl font-semibold md:font-bold text-white group-hover:text-white transition-colors truncate md:line-clamp-2 md:whitespace-normal">
-                {name}
+                {title}
               </h3>
-              <span className="text-[10px] md:text-xs font-medium text-dull-lavender-300/80 md:text-white/70 md:px-3 md:py-1 md:rounded-full md:bg-white/10 md:self-start md:group-hover:text-white/90 md:group-hover:bg-white/15 transition-all">
-                {date}
-              </span>
+              <div className="flex flex-wrap gap-2 text-[10px] md:text-xs">
+                <span className="font-medium text-dull-lavender-300/80 md:text-white/70 md:px-3 md:py-1 md:rounded-full md:bg-white/10 md:group-hover:text-white/90 md:group-hover:bg-white/15 transition-all">
+                  {new Date(date).toLocaleDateString('es-ES', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                  })}
+                </span>
+                {location && (
+                  <span className="flex items-center gap-1 font-medium text-dull-lavender-300/80 md:text-white/70 md:px-3 md:py-1 md:rounded-full md:bg-white/10 md:group-hover:text-white/90 md:group-hover:bg-white/15 transition-all">
+                    <svg
+                      className="w-3 h-3"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                      />
+                      <path
+                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                      />
+                    </svg>
+                    {location}
+                  </span>
+                )}
+              </div>
             </div>
 
             <p className="hidden md:block mt-3 text-sm lg:text-base text-white/70 group-hover:text-white/80 transition-colors line-clamp-3">

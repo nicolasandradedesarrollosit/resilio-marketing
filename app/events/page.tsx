@@ -1,62 +1,24 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
 import EventComponent from './_components/EventComponent';
+import { useEvents } from './_hooks/useEvents';
 
 import GoBack from '@/common/GoBack';
 import Footer from '@/common/Footer';
 
 export default function Events() {
-  const mockEvents = [
-    {
-      name: 'Tech Conference 2024',
-      description:
-        'Únete a nosotros para una inmersión profunda en las últimas tendencias tecnológicas y networking con expertos de la industria.',
-      date: '15 de Septiembre, 2024',
-      bgColor: 'dull-lavender-400/50',
-      href: '/events/tech-conference-2024',
-    },
-    {
-      name: 'Workshop de Diseño UX',
-      description:
-        'Aprende las mejores prácticas en diseño de experiencia de usuario con casos reales de nuestros proyectos.',
-      date: '22 de Septiembre, 2024',
-      bgColor: 'dull-lavender-500/40',
-      href: '/events/workshop-ux',
-    },
-    {
-      name: 'Networking Event',
-      description:
-        'Conecta con creativos, emprendedores y profesionales de la industria en un ambiente relajado y propicio para colaboraciones.',
-      date: '29 de Septiembre, 2024',
-      bgColor: 'dull-lavender-600/30',
-      href: '/events/networking-event',
-    },
-    {
-      name: 'Masterclass: Marketing Digital',
-      description:
-        'Descubre estrategias avanzadas de marketing digital y cómo potenciar tu marca en redes sociales.',
-      date: '6 de Octubre, 2024',
-      bgColor: 'dull-lavender-400/40',
-      href: '/events/masterclass-marketing',
-    },
-    {
-      name: 'Hackathon Creativo',
-      description:
-        'Compite con otros creadores en un evento de 24 horas para desarrollar soluciones innovadoras a desafíos reales.',
-      date: '13 de Octubre, 2024',
-      bgColor: 'dull-lavender-500/50',
-      href: '/events/hackathon-creativo',
-    },
-    {
-      name: 'Panel de Emprendimiento',
-      description:
-        'Escucha las historias de éxito de emprendedores que transformaron sus ideas en negocios prósperos.',
-      date: '20 de Octubre, 2024',
-      bgColor: 'dull-lavender-600/40',
-      href: '/events/panel-emprendimiento',
-    },
-  ];
+  const { events, isLoading } = useEvents();
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-dull-lavender-400" />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -90,21 +52,22 @@ export default function Events() {
             <div className="mb-6 md:mb-8 text-center md:text-left">
               <p className="text-white/60 text-xs md:text-base">
                 <span className="font-semibold text-white">
-                  {mockEvents.length}
+                  {events.length}
                 </span>{' '}
                 eventos próximos
               </p>
             </div>
 
             <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 lg:gap-8">
-              {mockEvents.map((event, index) => (
+              {events.map((event, index) => (
                 <EventComponent
-                  key={`${index}-${event.name}`}
-                  bgColor={event.bgColor}
+                  key={`${index}-${event.title}`}
                   date={event.date}
                   description={event.description}
-                  href={event.href}
-                  name={event.name}
+                  href={event.url_provider}
+                  image={event.url_image}
+                  location={event.location}
+                  title={event.title}
                 />
               ))}
             </div>
