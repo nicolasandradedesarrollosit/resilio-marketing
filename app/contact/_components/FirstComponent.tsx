@@ -54,10 +54,10 @@ export default function FirstComponent() {
               Contacto
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+          <h2 className="text-xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
             Contactémonos
           </h2>
-          <p className="text-base md:text-lg text-gray-500 leading-relaxed">
+          <p className="text-sm md:text-lg text-gray-500 leading-relaxed">
             ¿Tenés una pregunta o necesitás asistencia? Contactate con el equipo
             de soporte, estamos para ayudarte en lo que requieras.
           </p>
@@ -73,10 +73,10 @@ export default function FirstComponent() {
                 {feature.icon}
               </div>
               <div className="flex flex-col gap-1">
-                <h3 className="text-base md:text-lg font-semibold text-gray-900">
+                <h3 className="text-sm md:text-lg font-semibold text-gray-900">
                   {feature.title}
                 </h3>
-                <p className="text-sm text-gray-600">{feature.description}</p>
+                <p className="text-xs text-gray-600">{feature.description}</p>
               </div>
             </div>
           ))}

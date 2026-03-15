@@ -56,11 +56,11 @@ export default function Footer() {
             Desarrollado por{' '}
             <a
               className="text-gray-400 hover:text-dull-lavender-400 transition-colors duration-300"
-              href="https://nicolas-andrade.vercel.app"
+              href="https://andart.company"
               rel="noopener noreferrer"
               target="_blank"
             >
-              Nicolás Andrade
+              Andart
             </a>
           </p>
         </div>

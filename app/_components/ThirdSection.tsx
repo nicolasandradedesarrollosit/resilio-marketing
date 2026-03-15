@@ -58,7 +58,7 @@ export default function ThirdSection() {
 
   return (
     <div
-      className="relative w-full py-20 px-4 md:px-8 overflow-hidden bg-gradient-to-br from-black via-dull-lavender-950 to-black"
+      className="relative w-full py-20 px-4 md:px-8 overflow-hidden"
       id="process"
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -71,10 +71,11 @@ export default function ThirdSection() {
         <div
           className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
-          <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-white via-dull-lavender-200 to-dull-lavender-400 bg-clip-text text-transparent">
+          <h2 className="text-xl md:text-4xl lg:text-5xl font-bold mb-3 bg-gradient-to-r from-white via-dull-lavender-200 to-dull-lavender-400 bg-clip-text text-transparent">
             Nuestro Proceso
           </h2>
-          <p className="text-xl text-white/70 max-w-3xl mx-auto">
+          <div className="mx-auto w-16 h-0.5 bg-gradient-to-r from-dull-lavender-400 to-dull-lavender-600 rounded-full mb-3" />
+          <p className="text-xs md:text-lg text-white/60 font-medium max-w-3xl mx-auto">
             De la idea a la realidad: así transformamos tu visión en
             experiencias memorables
           </p>
@@ -114,10 +115,10 @@ export default function ThirdSection() {
                   </div>
 
                   <div className="relative">
-                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-dull-lavender-300 transition-colors duration-300">
+                    <h3 className="text-base md:text-2xl font-bold text-white mb-3 group-hover:text-dull-lavender-300 transition-colors duration-300">
                       {step.title}
                     </h3>
-                    <p className="text-white/70 leading-relaxed">
+                    <p className="text-xs md:text-base text-white/70 leading-relaxed">
                       {step.description}
                     </p>
                   </div>
@@ -147,17 +148,17 @@ export default function ThirdSection() {
               }`}
               style={{ transitionDelay: `${600 + index * 100}ms` }}
             >
-              <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-dull-lavender-300 to-dull-lavender-500 bg-clip-text text-transparent mb-2">
+              <div className="text-2xl md:text-5xl font-bold bg-gradient-to-r from-dull-lavender-300 to-dull-lavender-500 bg-clip-text text-transparent mb-2">
                 {stat.value}
               </div>
-              <div className="text-sm text-white/70">{stat.label}</div>
+              <div className="text-xs text-white/70">{stat.label}</div>
             </div>
           ))}
         </div>
 
         <div className="text-center">
           <Button
-            className="bg-gradient-to-r from-dull-lavender-500 to-dull-lavender-700 hover:from-dull-lavender-400 hover:to-dull-lavender-600 text-white font-semibold px-12 py-7 text-lg shadow-xl shadow-dull-lavender-500/30 hover:shadow-2xl hover:shadow-dull-lavender-400/40 transition-all duration-300 hover:scale-105"
+            className="bg-gradient-to-r from-dull-lavender-500 to-dull-lavender-700 hover:from-dull-lavender-400 hover:to-dull-lavender-600 text-white font-semibold px-12 py-7 text-sm md:text-lg shadow-xl shadow-dull-lavender-500/30 hover:shadow-2xl hover:shadow-dull-lavender-400/40 transition-all duration-300 hover:scale-105"
             size="lg"
             onPress={handleContact}
           >

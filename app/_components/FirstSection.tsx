@@ -6,22 +6,18 @@ export default function FirstSection() {
   const router = useRouter();
 
   const cardsData = [
+    { imageSrc: '/services/fotografia.png', title: 'Fotografía y video' },
+    { imageSrc: '/services/produccion.png', title: 'Producción de eventos' },
+    { imageSrc: '/services/diseño-grafico.png', title: 'Diseño gráfico' },
+    { imageSrc: '/services/3d.png', title: 'Modelado y renderizado 3D' },
+    { imageSrc: '/services/redes-sociales.png', title: 'Redes sociales' },
+    { imageSrc: '/services/motion.jpg', title: 'Visuals & Motion graphics' },
     {
-      imageSrc: '/service-1.png',
-      title: 'Servicio de fotografía',
+      imageSrc: '/services/programacion.jpg',
+      title: 'Programación y software',
     },
-    {
-      imageSrc: '/service-2.png',
-      title: 'Producción de eventos',
-    },
-    {
-      imageSrc: '/service-3.png',
-      title: 'Diseño gráfico',
-    },
-    {
-      imageSrc: '/service-4.png',
-      title: 'Administración de redes sociales',
-    },
+    { imageSrc: '/services/ai.jpg', title: 'IA' },
+    { imageSrc: '/services/scouting.jpg', title: 'Scouting e influencers' },
   ];
 
   const handleContact = () => {
@@ -30,17 +26,18 @@ export default function FirstSection() {
 
   return (
     <div
-      className="w-full min-h-[60vh] py-16 md:py-20 lg:py-24 px-4 md:px-6 lg:px-8 flex flex-col gap-6 bg-black items-center"
+      className="w-full min-h-[60vh] py-16 md:py-20 lg:py-24 px-4 md:px-6 lg:px-8 flex flex-col gap-6 items-center"
       id="services"
     >
-      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-dull-lavender-400 text-center max-w-4xl">
+      <h2 className="text-xl md:text-4xl lg:text-5xl font-bold mb-3 bg-gradient-to-r from-white via-dull-lavender-200 to-dull-lavender-400 bg-clip-text text-transparent text-center">
         Nuestros servicios
-      </h1>
-      <span className="text-base md:text-lg text-white/70 text-center max-w-2xl">
+      </h2>
+      <div className="w-16 h-0.5 bg-gradient-to-r from-dull-lavender-400 to-dull-lavender-600 rounded-full mb-3" />
+      <span className="text-xs md:text-lg text-white/60 font-medium text-center max-w-2xl">
         Descubre lo que ofrecemos para ti
       </span>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 lg:gap-6 mt-8 md:mt-10 w-full max-w-7xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-6 mt-8 md:mt-10 w-full max-w-7xl">
         {cardsData.map((card, index) => (
           <Card
             key={`${index}-${card.title}`}

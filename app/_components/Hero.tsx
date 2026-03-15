@@ -42,16 +42,16 @@ export default function Hero() {
             width={96}
           />
           <div className="flex flex-col gap-4 max-w-xl">
-            <h1 className="text-white/90 font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl tracking-tight leading-tight">
+            <h1 className="text-white/90 font-bold text-xl sm:text-5xl lg:text-6xl xl:text-7xl tracking-tight leading-tight">
               Resilio Life
             </h1>
-            <p className="text-xl sm:text-2xl lg:text-3xl text-white/70 font-light">
+            <p className="text-xs sm:text-2xl lg:text-3xl text-white/70 font-light">
               Transformamos ideas en experiencias
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto px-4 sm:px-0">
             <Button
-              className="bg-dull-lavender-400/50 hover:bg-dull-lavender-600/70 text-white/90 transition-all duration-300 w-full sm:w-auto px-8 py-6 text-base sm:text-lg font-medium"
+              className="bg-dull-lavender-400/50 hover:bg-dull-lavender-600/70 text-white/90 transition-all duration-300 w-full sm:w-auto px-8 py-6 text-sm sm:text-lg font-medium"
               size="lg"
               variant="ghost"
               onClick={handlePortfolio}
@@ -59,7 +59,7 @@ export default function Hero() {
               Nuestros trabajos
             </Button>
             <Button
-              className="bg-white/90 text-dull-lavender-900 hover:bg-white transition-all duration-300 w-full sm:w-auto px-8 py-6 text-base sm:text-lg font-medium"
+              className="bg-white/90 text-dull-lavender-900 hover:bg-white transition-all duration-300 w-full sm:w-auto px-8 py-6 text-sm sm:text-lg font-medium"
               size="lg"
               variant="primary"
               onClick={handleContact}

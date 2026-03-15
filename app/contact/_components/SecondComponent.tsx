@@ -156,10 +156,10 @@ export default function SecondComponent() {
           onSubmit={handleSubmit}
         >
           <div className="flex flex-col gap-2 pb-3 md:pb-4 border-b border-gray-200">
-            <h3 className="text-xl md:text-2xl font-semibold text-gray-900">
+            <h3 className="text-base md:text-2xl font-semibold text-gray-900">
               Envíanos un mensaje
             </h3>
-            <p className="text-xs md:text-sm text-gray-600">
+            <p className="text-[10px] md:text-sm text-gray-600">
               Completa el formulario y te responderemos a la brevedad
             </p>
           </div>

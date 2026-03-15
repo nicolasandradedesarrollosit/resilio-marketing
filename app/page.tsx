@@ -18,7 +18,7 @@ export default function Home() {
       >
         <Hero />
       </header>
-      <main>
+      <main className="bg-gradient-to-br from-black via-dull-lavender-950 to-black">
         <FirstSection />
         <ThirdSection />
         <SecondSection />

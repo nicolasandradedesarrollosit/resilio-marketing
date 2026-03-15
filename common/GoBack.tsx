@@ -7,7 +7,7 @@ export default function GoBack({ url }: { url: string }) {
 
   return (
     <button
-      className="absolute cursor-pointer top-6 left-6 flex items-center gap-1 sm:gap-2 px-4 py-2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 group"
+      className="absolute z-50 cursor-pointer top-6 left-6 flex items-center gap-1 sm:gap-2 px-4 py-2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 group"
       onClick={() => {
         router.push(url);
       }}
