@@ -1,6 +1,8 @@
 import Image from 'next/image';
 
 export default function Footer() {
+  const anioActual = new Date().getFullYear();
+
   return (
     <footer className="bg-black text-white w-full border-t border-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-16 py-12 sm:py-16 md:py-20">
@@ -50,7 +52,7 @@ export default function Footer() {
 
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6">
           <p className="text-xs sm:text-sm text-white font-light text-center sm:text-left">
-            © 2024 Resilio. Todos los derechos reservados.
+            © {anioActual} Resilio. Todos los derechos reservados.
           </p>
           <p className="text-xs sm:text-sm text-white font-light text-center sm:text-right">
             Desarrollado por{' '}
