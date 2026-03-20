@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
@@ -41,14 +43,20 @@ export default function Navbar() {
     setIndicatorStyle(prev => ({ ...prev, opacity: 0 }));
   };
 
+  const isInternalPage = (href: string) => href.startsWith('/');
+
   return (
     <div className="fixed inset-x-0 top-6 flex items-start justify-center py-4 bg-transparent pointer-events-none z-50">
-      <nav className="pointer-events-auto hidden md:block bg-black px-6 py-2 rounded-full shadow-2xl">
+      <nav
+        aria-label="Navegación principal"
+        className="pointer-events-auto hidden md:block bg-black px-6 py-2 rounded-full shadow-2xl"
+      >
         <div
           className="flex gap-4 lg:gap-8 relative items-center"
           onMouseLeave={handleMouseLeave}
         >
           <div
+            aria-hidden="true"
             className="absolute bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl pointer-events-none transition-all duration-300 ease-out"
             style={{
               width: `${indicatorStyle.width}px`,
@@ -58,24 +66,40 @@ export default function Navbar() {
               opacity: indicatorStyle.opacity,
             }}
           />
-          {navBarItems.map((items, index) => (
-            <a
-              key={index}
-              className="text-white text-sm lg:text-md font-medium px-3 lg:px-4 py-2 relative z-10 transition-colors duration-300 hover:text-white whitespace-nowrap"
-              href={items.href}
-              onMouseEnter={handleMouseEnter}
-            >
-              {items.name}
-            </a>
-          ))}
+          {navBarItems.map((item, index) =>
+            isInternalPage(item.href) ? (
+              <Link
+                key={index}
+                className="text-white text-sm lg:text-md font-medium px-3 lg:px-4 py-2 relative z-10 transition-colors duration-300 hover:text-white whitespace-nowrap"
+                href={item.href}
+                onMouseEnter={handleMouseEnter}
+              >
+                {item.name}
+              </Link>
+            ) : (
+              <a
+                key={index}
+                className="text-white text-sm lg:text-md font-medium px-3 lg:px-4 py-2 relative z-10 transition-colors duration-300 hover:text-white whitespace-nowrap"
+                href={item.href}
+                onMouseEnter={handleMouseEnter}
+              >
+                {item.name}
+              </a>
+            )
+          )}
         </div>
       </nav>
 
-      <nav className="pointer-events-auto md:hidden bg-black rounded-3xl shadow-2xl w-[90%] max-w-md">
+      <nav
+        aria-label="Navegación móvil"
+        className="pointer-events-auto md:hidden bg-black rounded-3xl shadow-2xl w-[90%] max-w-md"
+      >
         <div className="flex items-center justify-between px-6 py-3">
           <span className="text-white font-bold text-lg">Menu</span>
           <button
-            className="text-white p-2 hover:bg-white/10 transition-colors"
+            aria-expanded={isMenuOpen}
+            aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+            className="text-white p-2 hover:bg-white/10 transition-colors rounded-lg"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -86,16 +110,18 @@ export default function Navbar() {
           className={`overflow-hidden transition-all duration-300 ease-in-out ${
             isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
           }`}
+          role="menu"
         >
           <div className="px-4 pb-4 pt-2 flex flex-col gap-2">
-            {navBarItems.map((items, index) => (
+            {navBarItems.map((item, index) => (
               <Link
                 key={index}
                 className="text-white text-md font-medium px-4 py-3 rounded-2xl hover:bg-white/10 transition-colors duration-300"
-                href={items.href}
+                href={item.href}
+                role="menuitem"
                 onClick={() => setIsMenuOpen(false)}
               >
-                {items.name}
+                {item.name}
               </Link>
             ))}
           </div>

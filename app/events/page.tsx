@@ -1,3 +1,5 @@
+import type { Metadata } from 'next';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -6,24 +8,41 @@ import EventComponent from './_components/EventComponent';
 import GoBack from '@/common/GoBack';
 import { getEvents } from '@/services/getEvents';
 
+export const metadata: Metadata = {
+  title: 'Eventos',
+  description:
+    'Descubre los próximos eventos de Resilio Life. Experiencias creativas, networking y comunidad para conectar con el mundo del marketing y la creatividad.',
+  openGraph: {
+    title: 'Eventos - Resilio Life',
+    description:
+      'Descubre los próximos eventos de Resilio Life. Experiencias creativas y comunidad.',
+  },
+};
+
 export default async function Events() {
   const result = await getEvents();
   const events = result?.data ?? [];
 
   return (
-    <section className="flex flex-col h-screen overflow-hidden w-full bg-gradient-to-br from-black via-black to-dull-lavender-950">
+    <section
+      aria-labelledby="events-heading"
+      className="flex flex-col h-screen overflow-hidden w-full bg-gradient-to-br from-black via-black to-dull-lavender-950"
+    >
       <GoBack url="/" />
       <div className="relative w-full px-5 md:px-8 mt-8 md:mt-12 py-8 md:py-16 lg:py-20 border-b border-white/10 shrink-0">
         <div className="max-w-7xl mx-auto text-center md:text-left">
           <div className="flex flex-col md:flex-row items-center md:items-center gap-3 md:gap-4 mb-4 md:mb-6">
             <Image
-              alt="Resilio Events"
+              alt="Logo de Resilio Events"
               className="h-8 w-8 md:h-10 md:w-10"
               height={40}
               src="/logo-icon.png"
               width={40}
             />
-            <h1 className="text-xl md:text-4xl lg:text-5xl font-bold text-dull-lavender-100">
+            <h1
+              className="text-xl md:text-4xl lg:text-5xl font-bold text-dull-lavender-100"
+              id="events-heading"
+            >
               Nuestros Eventos
             </h1>
           </div>
@@ -33,7 +52,10 @@ export default async function Events() {
           </p>
         </div>
 
-        <div className="hidden md:block absolute top-0 right-0 w-72 h-72 bg-dull-lavender-500/10 rounded-full -mr-32 -mt-32 blur-3xl" />
+        <div
+          aria-hidden="true"
+          className="hidden md:block absolute top-0 right-0 w-72 h-72 bg-dull-lavender-500/10 rounded-full -mr-32 -mt-32 blur-3xl"
+        />
       </div>
 
       <div className="flex-1 overflow-y-auto w-full px-5 md:px-8 py-8 md:py-16 lg:py-20">
@@ -79,7 +101,7 @@ export default async function Events() {
               Contactanos para explorar oportunidades de colaboración.
             </p>
             <Link
-              className="inline-block px-6 md:px-8 py-2.5 md:py-3 rounded-lg bg-dull-lavender-500 hover:bg-dull-lavender-600 active:scale-95 text-white text-sm md:text-base font-medium transition-all duration-300 hover:shadow-lg hover:shadow-dull-lavender-500/30"
+              className="inline-block px-6 md:px-8 py-2.5 md:py-3 rounded-lg bg-dull-lavender-500 hover:bg-dull-lavender-600 active:scale-95 text-white text-sm md:text-base font-medium transition-all duration-300 hover:shadow-lg hover:shadow-dull-lavender-500/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dull-lavender-400"
               href="/contact"
             >
               Contáctanos

@@ -1,3 +1,5 @@
+'use client';
+
 import { Card, Button } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
@@ -25,17 +27,24 @@ export default function FirstSection() {
   };
 
   return (
-    <div
+    <section
+      aria-labelledby="services-heading"
       className="w-full min-h-[60vh] py-16 md:py-20 lg:py-24 px-4 md:px-6 lg:px-8 flex flex-col gap-6 items-center"
       id="services"
     >
-      <h2 className="text-xl md:text-4xl lg:text-5xl font-bold mb-3 bg-gradient-to-r from-white via-dull-lavender-200 to-dull-lavender-400 bg-clip-text text-transparent text-center">
+      <h2
+        className="text-xl md:text-4xl lg:text-5xl font-bold mb-3 bg-gradient-to-r from-white via-dull-lavender-200 to-dull-lavender-400 bg-clip-text text-transparent text-center"
+        id="services-heading"
+      >
         Nuestros servicios
       </h2>
-      <div className="w-16 h-0.5 bg-gradient-to-r from-dull-lavender-400 to-dull-lavender-600 rounded-full mb-3" />
-      <span className="text-xs md:text-lg text-white/60 font-medium text-center max-w-2xl">
+      <div
+        aria-hidden="true"
+        className="w-16 h-0.5 bg-gradient-to-r from-dull-lavender-400 to-dull-lavender-600 rounded-full mb-3"
+      />
+      <p className="text-xs md:text-lg text-white/60 font-medium text-center max-w-2xl">
         Descubre lo que ofrecemos para ti
-      </span>
+      </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-6 mt-8 md:mt-10 w-full max-w-7xl">
         {cardsData.map((card, index) => (
@@ -67,12 +76,12 @@ export default function FirstSection() {
                 variant="tertiary"
                 onPress={handleContact}
               >
-                Escríbenos!
+                Escribenos!
               </Button>
             </Card.Footer>
           </Card>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

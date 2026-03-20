@@ -1,4 +1,3 @@
-'use client';
 import Hero from './_components/Hero';
 import FirstSection from './_components/FirstSection';
 import SecondSection from './_components/SecondSection';

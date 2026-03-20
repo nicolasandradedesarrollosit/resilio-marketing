@@ -1,5 +1,13 @@
 {
   "permissions": {
-    "allow": ["Bash(npx next:*)"]
+    "allow": [
+      "Bash(npx next:*)",
+      "Bash(find C:/Users/nicol/Documents/project-resilio-mkt/resilio-marketing/node_modules/@heroui -name *navbar* -o -name *nav*)",
+      "Bash(grep -r export.*Image C:/Users/nicol/Documents/project-resilio-mkt/resilio-marketing/node_modules/@heroui/react/dist)",
+      "Bash(find C:/Users/nicol/Documents/project-resilio-mkt/resilio-marketing/src -type f -name *.tsx -o -name *.ts)",
+      "Bash(find C:/Users/nicol/Documents/project-resilio-mkt/resilio-marketing/app -type f \\\\\\(-name *.tsx -o -name *.ts \\\\\\))",
+      "Bash(find C:/Users/nicol/Documents/project-resilio-mkt/resilio-marketing/common -type f \\\\\\(-name *.tsx -o -name *.ts \\\\\\))",
+      "Bash(node -e \"const heroui = require\\(''@heroui/react''\\); console.log\\(typeof heroui.Link, typeof heroui.Disclosure, typeof heroui.DisclosureGroup\\)\")"
+    ]
   }
 }
